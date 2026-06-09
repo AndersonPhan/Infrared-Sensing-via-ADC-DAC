@@ -79,10 +79,10 @@ The SysTick_Init() function configures the SysTick timer to generate a 1 ms time
 
 The ADC module is responsible for reading the voltage produced by the infrared sensor.
 
-ADC_Wakeup() exits the ADC from deep-power-down mode.
-ADC_Common_Configuration() configures common ADC settings.
-ADC_Pin_Init() configures PA1 as ADC input channel ADC12_IN6.
-ADC_Init() enables the ADC, selects 12-bit resolution, and configures Timer 4 TRGO as the conversion trigger source.
+- ADC_Wakeup() exits the ADC from deep-power-down mode.
+- ADC_Common_Configuration() configures common ADC settings.
+- ADC_Pin_Init() configures PA1 as ADC input channel ADC12_IN6.
+- ADC_Init() enables the ADC, selects 12-bit resolution, and configures Timer 4 TRGO as the conversion trigger source.
 
 The ADC converts the analog sensor voltage into a digital value ranging from 0 to 4095, allowing the software to determine whether an object is within the specified detection range.
 
@@ -124,3 +124,48 @@ The TIM4_IRQHandler() function executes whenever Timer 4 generates an interrupt.
 The ADC1_2_IRQHandler() function processes ADC conversion results. Each time a conversion completes, the handler compares the measured value against a predefined threshold. If the sensor voltage indicates that an object is within range, a flag is set to enable the buzzer and LED. Otherwise, the flag is cleared, disabling both outputs.
 
 This interrupt-driven approach allows the system to respond quickly to changes in object proximity while minimizing processor overhead.
+
+## Experiment, Results, and Conclusions
+
+### Circuit Implementation
+
+#### Figure 1: Breadboard Circuit with Code
+<table>
+  <tr>
+    <td align="center">
+      <img width="948" height="605" alt="image" src="https://github.com/user-attachments/assets/51645de5-9b25-4af7-bc40-f2275ac46e98" /><br>
+      Before Threshold activated
+    </td>
+    <td align="center">
+      <img width="653" height="637" alt="image" src="https://github.com/user-attachments/assets/b21160c3-6f8b-4a05-9b72-48cc7d249f66" /><br>
+      After 3 V Threshold activated
+    </td>
+  </tr>
+</table>
+
+### Testing
+
+There are a few ways to see if the code is implemented on the board correctly. The first is if LED D5 is 
+turned off and the buzzer is quiet after the code is initially loaded onto the board. After the reset (black) 
+button is pushed the LED will turn green and buzzer will generate a tone with 440 Hz whenever an 
+object approaches the threshold of the sensor, which is set to 3 V. The LED and buzzer should not work 
+if there is nothing close to the sensor. The final way to see if the code is implemented correctly is if Tera 
+Term displays the correct measured volts by ADC whenever an object approaches the sensor. 
+
+<p align="center">
+  <img width="594" height="470" alt="image" src="https://github.com/user-attachments/assets/7496427c-d7b4-41aa-a111-fb66d1dc1342" /> <br>
+  <b>Fig 2. Tera Term Terminal with measured volts</b>
+</p>
+
+### Results
+
+When the code is initially implemented on the board LED D5 is off and the buzzer is quiet, as seen in Figure 1. After the reset button is pushed LED D5 is still off and the buzzer is still quiet, as seen in Figure 1. Next, whenever I moved my hand towards the sensor, and it reaches the threshold (3 V) the green LED lights up and the buzzer starts generating a tone of 440 Hz, as seen in Figure 1. Finally, the measured volts changed based on the distance between my hand and the sensor, which is displayed in Tera Tern, as seen in Figure 2. 
+
+### Conclusions
+
+ADC and DAC signals are triggered by a timer. This trigger allows ADC conversion and DAC tone generation in the code. By setting a threshold to the sensor it is also possible to control whenever DAC voltage is present in the circuit. 
+
+## References
+
+[1] “STM32L476RG_NUCLEO_Pins” ENGIN 346 on Canvas of UMass Boston, 2024 Fall, umassboston.instructure.com/courses/3405/pages/datasheets  
+[2] “STM32L47xxx_Reference_Manual” ENGIN 346 on Canvas of UMass Boston, 2024 Fall, umassboston.instructure.com/courses/3405/pages/datasheets  
