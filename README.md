@@ -63,6 +63,10 @@ The UART2_Init() function initializes USART2 for serial communication with Tera 
 
 The TIM4_Init() function configures Timer 4 Channel 1 as the primary timing source for the project. Timer 4 generates TRGO (Trigger Output) events that simultaneously trigger both ADC and DAC operations. The timer's ARR and CCR1 values are selected to generate a 440 Hz output frequency for the buzzer. Additionally, TIM2 Channel 1 is configured for debugging and signal verification.
 
+<p align="center">
+  <img width="669" height="104" alt="image" src="https://github.com/user-attachments/assets/fd24b973-d337-43fa-9f91-09c8b0e88681" />
+</p>
+
 #### LED Control
 
 The configure_LED_pin() function configures the onboard green LED connected to PA5. Additional functions including turn_on_LED(), turn_off_LED(), and toggle_LED() provide simple control of the LED state. The LED serves as a visual indicator when the proximity threshold has been exceeded.
@@ -105,9 +109,9 @@ If the threshold is not met, the buzzer is disabled and the LED is turned off.
 
 Sensor voltages are calculated from the ADC readings using the 12-bit conversion relationship:
 
-[
-V_{IN} = \frac{3.3 \times \text{ADC Value}}{4095}
-]
+<p align="center">
+  <img width="652" height="58" alt="image" src="https://github.com/user-attachments/assets/e3acb63d-998d-42e2-96f1-1718cdc3ea0e" />
+</p>
 
 Voltage measurements are transmitted to Tera Term approximately every 500 ms for real-time monitoring.
 
