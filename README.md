@@ -157,17 +157,17 @@ This interrupt-driven approach allows the system to respond quickly to changes i
 
 ### Testing
 
-There are a few ways to see if the code is implemented on the board correctly. The first is if LED D5 is 
-turned off and the buzzer is quiet after the code is initially loaded onto the board. After the reset (black) 
-button is pushed the LED will turn green and buzzer will generate a tone with 440 Hz whenever an 
-object approaches the threshold of the sensor, which is set to 3 V. The LED and buzzer should not work 
-if there is nothing close to the sensor. The final way to see if the code is implemented correctly is if Tera 
-Term displays the correct measured volts by ADC whenever an object approaches the sensor. 
+There are a few ways to see if the code is implemented on the board correctly. The first is if LED D5 is turned off and the buzzer is quiet after the code is initially loaded onto the board. After the reset (black) button is pushed the LED will turn green and buzzer will generate a tone with 440 Hz whenever an 
+object approaches the threshold of the sensor, which is set to 3 V. The LED and buzzer should not work if there is nothing close to the sensor. The final way to see if the code is implemented correctly is if Tera Term displays the correct measured volts by ADC whenever an object approaches the sensor. 
 
 <p align="center">
   <img width="594" height="470" alt="image" src="https://github.com/user-attachments/assets/7496427c-d7b4-41aa-a111-fb66d1dc1342" /> <br>
   <b>Fig 2. Tera Term Terminal with measured volts</b>
 </p>
+
+### Demo Video
+
+[![Watch the demo](https://img.youtube.com/vi/6O10AegdtcA/maxresdefault.jpg)](https://www.youtube.com/watch?v=6O10AegdtcA)
 
 ### Results
 
