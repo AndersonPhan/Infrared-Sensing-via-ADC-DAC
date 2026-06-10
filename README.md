@@ -127,6 +127,18 @@ This interrupt-driven approach allows the system to respond quickly to changes i
 
 ## Experiment, Results, and Conclusions
 
+### Parts List
+
+- 1x stm32l476_NUCLEO_L476RG microcontroller kit
+- 1x Bread board
+- 1x 10k Ohm Resistor
+- 1x 1k Ohm Resistor
+- 1x 10M Ohm Resistor
+- 1x Photodiode
+- 1x LED
+- Male to Male Wires
+- 1x Buzzer
+
 ### Circuit Implementation
 
 #### Figure 1: Breadboard Circuit with Code
